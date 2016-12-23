@@ -16,14 +16,22 @@ export default class Chart extends Component {
     }
 
     this.padding = 50
+
+    this.windowResize = this.windowResize.bind(this)
+  }
+
+  windowResize (e) {
+    this.setState({
+      width: document.body.getBoundingClientRect().width
+    })
   }
 
   componentDidMount () {
-    window.addEventListener('resize', (e) => {
-      this.setState({
-        width: document.body.getBoundingClientRect().width
-      })
-    }, { passive: true })
+    window.addEventListener('resize', this.windowResize, { passive: true })
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.windowResize, false)
   }
 
   render () {
