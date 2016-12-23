@@ -1,0 +1,8 @@
+.y-axis {
+  stroke-width: 1px;
+  stroke: #ccc;
+}
+
+.y-axis-label {
+  text-anchor: end;
+}
