@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 
 const renderDataAsBars = (data, max) => data.map((point, i) => (
   <path
@@ -17,11 +17,4 @@ export default function BarData (props) {
       {renderDataAsBars(data.map(p => [xScale(p[0]), yScale(p[1])]), yScale(max))}
     </g>
   )
-}
-
-BarData.propTypes = {
-  data: PropTypes.array.isRequired,
-  xScale: PropTypes.func.isRequired,
-  yScale: PropTypes.func.isRequired,
-  max: PropTypes.number.isRequired
 }
