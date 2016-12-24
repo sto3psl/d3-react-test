@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
-import Chart from './Components/Chart/chart.js'
+import LineChart from './Components/LineChart/line-chart.js'
+import BarChart from './Components/BarChart/bar-chart.js'
 
 const randomizeData = () => {
   const d = []
@@ -31,8 +32,8 @@ class App extends Component {
     return (
       <div className='App'>
         <button onClick={this.newData}>New Data</button>
-        <Chart data={this.state.data} />
-        <Chart type='bar' data={this.state.data} />
+        <LineChart data={this.state.data} />
+        <BarChart data={this.state.data} />
       </div>
     )
   }

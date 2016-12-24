@@ -1,10 +1,10 @@
-import './chart.css'
+import '../Chart/chart.css'
 import React, { PropTypes, Component } from 'react'
 import * as d3 from 'd3'
-import XAxis from '../XAxis/x-axis.js'
-import YAxis from '../YAxis/y-axis.js'
+import Chart from '../Chart/chart.js'
+import BarData from '../BarData/bar-data.js'
 
-export default class Chart extends Component {
+export default class BarChart extends Component {
   constructor () {
     super()
 
@@ -12,8 +12,6 @@ export default class Chart extends Component {
       width: document.body.getBoundingClientRect().width,
       height: 300
     }
-
-    this.padding = 50
 
     this.windowResize = this.windowResize.bind(this)
   }
@@ -34,7 +32,7 @@ export default class Chart extends Component {
 
   render () {
     const { width, height } = this.state
-    const { data, children } = this.props
+    const { data } = this.props
 
     const xMax = d3.max(data.map(d => d[0]))
 
@@ -47,17 +45,13 @@ export default class Chart extends Component {
       .range([0, height])
 
     return (
-      <div>
-        <svg viewBox={`-${this.padding} -${this.padding} ${width + this.padding * 2} ${height + this.padding * 2}`}>
-          <XAxis data={data.map(p => p[0])} scale={xScale} yPos={yScale(1)} />
-          <YAxis ticks={5} scale={yScale} xPos={0} width={width} />
-          {children}
-        </svg>
-      </div>
+      <Chart data={data}>
+        <BarData data={data} yScale={yScale} xScale={xScale} max={1} />
+      </Chart>
     )
   }
 }
 
-Chart.propTypes = {
+BarChart.propTypes = {
   data: PropTypes.array.isRequired
 }
