@@ -1,13 +1,12 @@
 import React, { PropTypes } from 'react'
+import InteractiveDataPoint from '../InteractiveDataPoint/interactive-data-point.js'
 
 const renderDataPoints = (data, max) => data.map((point, i) => (
-  <circle
+  <InteractiveDataPoint
     key={`data-point-${i}`}
-    cx={point[0]}
-    cy={max - point[1]}
-    r={4}
-    strokeWidth='1'
-    className='data-point'
+    x={point[0]}
+    y={max - point[1]}
+    content={Math.floor(point[2] * 100) + '%'}
   />
 ))
 
@@ -29,7 +28,7 @@ export default function LineData (props) {
         strokeWidth={3}
         className='data-line'
       />
-      {renderDataPoints(data.map(p => [xScale(p[0]), yScale(p[1])]), yScale(max))}
+      {renderDataPoints(data.map(p => [xScale(p[0]), yScale(p[1]), p[1]]), yScale(max))}
     </g>
   )
 }

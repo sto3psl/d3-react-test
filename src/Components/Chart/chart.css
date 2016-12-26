@@ -27,7 +27,7 @@ text {
 
 .data-point {
   fill: rebeccapurple;
-  transition: r .2s cubic-bezier(1, 0.5, 0.5, 1.5), cy .5s ease-in-out, cx .5s ease-in-out;
+  transition: cy cx .5s ease-in-out;
 }
 
 .data-bar {
@@ -37,10 +37,6 @@ text {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: dash 4s linear forwards;
-}
-
-.data-point:hover {
-  r: 10;
 }
 
 .data-line {
