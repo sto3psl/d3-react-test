@@ -7,7 +7,7 @@ import YAxis from '../Components/YAxis/y-axis.js'
 export default function ChartHOC (WrappedComponent) {
   return class Chart extends Component {
     constructor () {
-      super ()
+      super()
 
       this.state = {
         width: document.body.getBoundingClientRect().width,
@@ -55,7 +55,7 @@ export default function ChartHOC (WrappedComponent) {
             xScale={xScale}
             yScale={yScale}
             max={1}
-            { ...this.props }
+            {...this.props}
           />
         </svg>
       )

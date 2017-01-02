@@ -1,24 +1,21 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 import './interactive-data-point.css'
 
 export default class InteractiveDataPoint extends Component {
   constructor () {
     super()
 
-    this.state = {
-      visibleText: false
-    }
-
     this.toggleText = this.toggleText.bind(this)
   }
 
   toggleText () {
-    this.setState({ visibleText : !this.state.visibleText })
+    this.props.onHighlightClick(this.props.point)
   }
 
   render () {
-    const { x, y, content } = this.props
-    const r = this.state.visibleText ? 10 : 4
+    const { x, y, content, highlight } = this.props
+    const r = highlight ? 10 : 4
+    const className = highlight ? 'data-point highlight' : 'data-point'
 
     return (
       <g>
@@ -27,10 +24,10 @@ export default class InteractiveDataPoint extends Component {
           cy={y}
           r={r}
           strokeWidth='1'
-          className='data-point'
+          className={className}
           onClick={this.toggleText}
         />
-        {this.state.visibleText &&
+        {highlight &&
           <text
             x={x}
             y={y - 20}
@@ -41,7 +38,6 @@ export default class InteractiveDataPoint extends Component {
         }
       </g>
     )
-
   }
 }
 

@@ -39,6 +39,10 @@ text {
   animation: dash 4s linear forwards;
 }
 
+.highlight {
+  stroke: #0ff;
+}
+
 .data-line {
   fill: none;
   stroke-dasharray: 10000;
